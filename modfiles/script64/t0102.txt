@@ -1,0 +1,28 @@
+function t0102_npc_0023()
+{
+  this.Talk.Load("mod_accessory_shop");
+  this.MessageSel(2, 100);
+  local result = this.Talk.GetResultSelectedNum();
+  this.TalkExit();
+  
+  if(result == 0)
+  {
+    this.Shop.Open(55);
+  }
+  else
+  {
+    this.Shop.Open(101);
+  }
+
+  while (1)
+  {
+    if (this.Shop.IsEnd())
+    {
+      break;
+    }
+
+    this.WaitFrame(this.Util.SecondFromFrame(1));
+  }
+
+  this.Shop.Close();
+}
